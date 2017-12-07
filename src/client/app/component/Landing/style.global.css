@@ -5,7 +5,7 @@ html {
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'CenturyOld', 'Arial', serif, sans-serif; 
 	font-size: 14px;
 	line-height: 1.5;
 	background: rgba(5, 26, 57, 1);
@@ -65,7 +65,7 @@ h2.header {
 }
 
 .header-styles .navbar-header .navbar-right a {
-    color: #88498F;
+    color: rgba(5, 26, 57, 1);
     font-weight: lighter;
 }
 
@@ -74,6 +74,16 @@ h2.header {
     padding-top: 10px;
     text-align: right;
     padding: 3px;
+}
+
+.nav li a {
+    margin: 10px 0px 0px 0px;
+}
+
+.nav li a:hover {
+    background-color: rgba(62, 75, 96, 0.7);
+    text-decoration: none;
+    border-radius: 6px;
 }
 
 .menu-item li {
@@ -88,6 +98,18 @@ h2.header {
 
 .navbar-right a {
     padding-right: 0px;
+}
+
+.dropdown-item {
+    color: red;
+    border: none;
+    border-bottom: 1px solid gray;
+    text-align: inherit;
+    white-space: nowrap;
+    background: none;
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
 }
 
 /******Landing Styles******/
@@ -130,7 +152,7 @@ h2.header {
 }
 
 .landing-options .btn:hover, .btn:active {
-	background-color: #9B6095;
+	background-color: rgba(20, 27, 38, 0.7);
 }
 
 

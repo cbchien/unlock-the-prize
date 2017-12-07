@@ -87,16 +87,6 @@ class Login extends Component {
 													</div>
 												</div>
 											</div>
-											<div className="linkedin-box socialMediaBox">
-												<div className="form-button">
-													<div className="form-icon">
-														<img src={linkedin}/>
-													</div>
-													<div className="form-link">
-														<Link to="/">Login with Linkedin</Link>
-													</div>
-												</div>
-											</div>
 											<div className="text-center form-divider">
 												<span>
 													<span className="divide-text">or</span>
