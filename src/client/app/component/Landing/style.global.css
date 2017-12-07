@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	background: rgba(5, 26, 57, 1);
+}
+
+section {
+	position: relative;
+	clear: both;
+}
+
+h3.header,
+h2.header {
+	text-align: center;
+}
+
+/******Header Styles******/
+
+.header-styles {
+    background: rgba(5, 26, 57, 1);
+	position: absolute;
+    background-color: rgba(5, 26, 57, 1);;
+    width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1042;
+}
+
+/*.header-styles ul{
+	list-style: none;
+    padding: 15px 3px 0px 3px;
+}*/
+
+.header-styles a {
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.header-styles .logo a,
+.navbar-header .navbar-brand{
+    font-size: 24px;
+}
+
+.header-styles .logo {
+    margin-left: 140px;
+}
+
+#logo {
+  border-radius: 50%;
+  width: 130px;
+  margin: 1% 1% 2px 1%;
+  position: absolute;
+}
+
+.header-styles .navbar-header {
+    padding: 10px;
+}
+
+.header-styles .navbar-header .navbar-right a {
+    color: #88498F;
+    font-weight: lighter;
+}
+
+.navbar-right {
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: right;
+    padding: 3px;
+}
+
+.menu-item li {
+    padding: 3px 3px 3px 8px;
+}
+
+.menu-item li a {
+    border-right: 1px solid white;
+    padding: 3px;
+    margin: 10px 0px 10px 4px !important;
+}
+
+.navbar-right a {
+    padding-right: 0px;
+}
+
+/******Landing Styles******/
+
+.landing {
+	height: 1024px;
+    background: url("https://cbchien.github.io/cover/beergarten.jpg") no-repeat center fixed;
+    padding-top: 50px;
+    margin-top: 80px;
+}
+
+.landing-title h1 {
+	color : #fff;
+	text-align: center;
+	font-size: 48px;
+	line-height: 72px;
+	font-weight: 300;
+}
+
+.landing-options {
+	text-align: center;
+}
+
+.landing-options .btn {
+	border-radius: 5px;
+	background-clip: padding-box;
+    background-color: #9B5094;
+    font-size: 14px;
+    line-height: 32px;
+    color: #fff;
+    width: 250px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 25px;
+    -webkit-box-shadow: 0 10px 10px 0 rgba(8,57,96,.15);
+    box-shadow: 0 10px 10px 0 rgba(8,57,96,.15);
+    cursor: pointer;
+}
+
+.landing-options .btn:hover, .btn:active {
+	background-color: #9B6095;
+}
+
+
+/*****Footer Styles*****/
+
+.main-footer {
+	background-color: #fff;
+    padding: 72px 0 0;
+    font-size: 13px;
+}
+
+.footer-section>ul {
+	list-style: none;
+	padding-left: 0;
+	text-transform: uppercase;
+}
+
+.footer-section li {
+	padding: 18px 0;
+}
+
+.footer-section a {
+	color: #666;
+}
+
+.footer-section strong {
+	color: #000;
+    display: block;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ddd;
+}
+
+.socialIcon {
+	padding: 3px;
+    text-align: center;
+    display: inline-block;
+    float: right;
+    margin-top: -3px;
+}
+
+.company-info .container{
+	border-top: 2px solid #eee;
+	margin-top: 35px;
+	padding-top: 30px;
+}
+
+/*****Media Queries*****/
+
+@media(max-width: 768px) {
+
+    /*****landing styles*****/
+    .landing {
+        height: 1200px;
+    }
+}
+

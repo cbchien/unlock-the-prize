@@ -101,7 +101,7 @@ app.use((err, req, res, next) => {
 });
 
 // create the server
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7070;
 const server = app.listen(PORT, () => {
   console.log(`${process.env.NODE_ENV} Jobbatical-clone server is listening on port ${server.address().port}`);
 });
