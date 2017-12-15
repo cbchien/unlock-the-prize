@@ -13,7 +13,7 @@ class About extends Component {
 				<div className="about-body">
 					<section className="about-title spacing">
 						<div className="about-header">
-							<h1>Meet Our Company</h1>
+							<h1>About Us</h1>
 						</div>
 					</section>
 					<div className="about-intro">

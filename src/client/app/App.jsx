@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 
 import {
-  Example,
   AuthDemo,
   Landing,
   Tasks,
@@ -15,6 +14,8 @@ import {
   ForgotPass,
   SignUp,
   About,
+  Products,
+  Contact,
 } from './component';
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         <Route path="/forgot" component={ForgotPass} />
         <Route path="/signup" component={SignUp} />
         <Route path="/about" component={About} />
+        <Route path="/products" component={Products} />
+        <Route path="/contact" component={Contact} />
         <Route path="/" component={Landing} />
         <Redirect to="/example" />
       </Switch>

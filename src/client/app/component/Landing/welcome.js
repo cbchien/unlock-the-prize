@@ -11,10 +11,10 @@ class Welcome extends Component {
 						
 					</h1>
 					<div className="landing-options">
-						<a href="/jobs" className="btn btn-lg">
+						<a href="/" className="btn btn-lg">
 							btn 1
 						</a>
-						<a href="/employer" className="btn btn-lg">
+						<a href="/" className="btn btn-lg">
 							btn 2
 						</a>
 					</div>

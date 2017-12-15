@@ -64,7 +64,7 @@ class Login extends Component {
 								<section className="auth-container">
 									<form onSubmit={this.handleSubmit}>
 										<div className="form-header">
-											Log In to JobsOnTheGo
+											Log In to Unlock The Prize
 										</div>
 										<section className="login-section">
 											<div className="facebook-box socialMediaBox">

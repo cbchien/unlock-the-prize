@@ -75,24 +75,13 @@ class Footer extends Component {
 									        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
 									    />									</span>
 								</li>
-								<li>
-									<a href="https://www.linkedin.com/">LinkedIn</a>
-									<span className="socialIcon">
-										<img src=""/>
-										<FontAwesome
-									        className='social'
-									        name='linkedin-square'
-									        size='2x'
-									        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-									    />									</span>
-								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div className="company-info">
 					<div className="container">
-						<p className="text-center">&copy; JobsOnTheGo 2017 Chingu B2L Project</p>
+						<p className="text-center">&copy; Unlock The Prize 2017</p>
 					</div>
 				</div>
 			</footer>

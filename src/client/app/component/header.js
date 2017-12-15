@@ -21,10 +21,6 @@ class Heading extends Component {
     };
   }
 
-  componentWillMount() {
-  	console.log('componentWillMount');
-  }
-
   logout() {
     if (!this.props.isLoggingOut) {
       this.props.logout();
@@ -60,9 +56,9 @@ class Heading extends Component {
 					        	<DropdownItem divider />
 					        	<DropdownItem><Link to="/about">品牌介紹<br/>About</Link></DropdownItem>
 					        	<DropdownItem divider />
-										<DropdownItem><Link to="/about">產品介紹<br/>Product</Link></DropdownItem>
+										<DropdownItem><Link to="/products">產品介紹<br/>Product</Link></DropdownItem>
 										<DropdownItem divider />
-										<DropdownItem><Link to="/about">聯絡我們<br/>Contact</Link></DropdownItem>
+										<DropdownItem><Link to="/contact">聯絡我們<br/>Contact</Link></DropdownItem>
 					        </DropdownMenu>
 					      </Dropdown>
 							</div>
@@ -78,31 +74,27 @@ class Heading extends Component {
 								</li>
 								<li className="hidden-xs">
                   {this.props.user &&
-                    <Link to="/">Achievement</Link>}
-								</li>
-								<li className="hidden-xs">
-                  {this.props.user &&
                     <Link to="/">Upload</Link>}
 								</li>
 							</ul>
 							<ul className="nav navbar-nav navbar-right menu-item">
 								{!this.props.user && <li>
-									<Link to="/signup">加入活動<br/>Join</Link>
+									<Link to="/login">加入活動<br/>Join</Link>
 								</li>}
 								{this.props.user && <li>
-                  <Link to="/">Achievement</Link>
+                  <Link to="/">闖關進度<br/>Achievement</Link>
                 </li>}
                 {this.props.user && <li>
-                  <Link to="/" onClick={this.logout}>Logout</Link>
+                  <Link to="/" onClick={this.logout}>登出<br/>Logout</Link>
                 </li>}
                 <li>
 									<Link to="/about">品牌介紹<br/>About</Link>
 								</li>
                 <li>
-									<Link to="/about">產品介紹<br/>Product</Link>
+									<Link to="/products">產品介紹<br/>Product</Link>
 								</li>
 								<li>
-									<Link to="/about">聯絡我們<br/>Contact</Link>
+									<Link to="/contact">聯絡我們<br/>Contact</Link>
 								</li>
 							</ul>
 						</div>
