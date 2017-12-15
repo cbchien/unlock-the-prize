@@ -1,45 +1,77 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
-import 'bootstrap/dist/css/bootstrap.css';
+import { compose, withProps } from 'recompose';
+// const FaAnchor = require("react-icons/lib/fa/anchor");
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  FusionTablesLayer,
+} from 'react-google-maps';
+const { InfoBox } = require("react-google-maps/lib/components/addons/InfoBox");
 
-import Footer from '../footer';
+// import PropTypes from 'prop-types'
 
-import styles from './GoogleMap.scss';
+// import Footer from '../footer';
 
-class GoogleMap extends Component{
+// import styles from './GoogleMap.scss';
+
+class GoogleMapDisplay extends Component{
 	constructor(props) {
       super(props)
-      this.handleSubmit = this.handleSubmit.bind(this)
-  	}
+	//   this.handleSubmit = this.handleSubmit.bind(this)
+		this.state = {
+			markers: [],
+		}
+	}
 
-  	componentDidMount(props) {
- 	}
-
-	handleSubmit(values) {
-		var newValue = Object.assign({},values,{'inquiry':'demo'})
-	    moreInfo(newValue)
+	setMarkerInfo(info) {
+		this.setState({
+			markers: [info],
+		})
 	}
 
 	render() {
+		const MapWithAMakredInfoWindow = compose(
+				withProps({
+					googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDdiRdQ6jYHCrzBV2_gqIb0Qaxi-UCp1UY&v=3.exp&libraries=geometry,drawing,places",
+					loadingElement: <div style={{ height: `100%` }} />,
+					containerElement: <div style={{ height: `400px` }} />,
+					mapElement: <div style={{ height: `100%` }} />,
+				}),
+				withScriptjs,
+				withGoogleMap
+            )(props =>
+			<GoogleMap
+				defaultZoom={12}
+				defaultCenter={{ lat: 25.040606, lng: 121.537567 }}
+			>
+				<FusionTablesLayer
+					url="https://fusiontables.googleusercontent.com/embedviz?q=select+col2+from+1NdkxQukJJVKsFPWOnKYFYp2sfxsXxecrTBNhhopa&viz=MAP&h=false&lat=25.053220852555956&lng=121.56093253710947&t=1&z=12&l=col2&y=2&tmplt=2&hml=TWO_COL_LAT_LNG"
+					options={{
+						query: {
+							select: `col2`,
+							from: `1NdkxQukJJVKsFPWOnKYFYp2sfxsXxecrTBNhhopa`
+						},
+						styles: [{
+							markerOptions: {
+								iconName: 'large_red'
+							}
+						}]
+					}}
+				/>
+			</GoogleMap>
+		);
 		return(
 			<div>
-				<EmpHeader />
-				<section className={ styles['demo']} >
-					<div className={ styles['contact-for-more'] }>
-						<h3 className={ styles['demo-title'] }>Demo Time</h3>
-						<div className={ styles['demo-content'] }>Contact Us for a fabulous demo
-							<div className={ styles['demo-content-detail'] }>Our team will demostrate the work flow </div>
-							<div className={ styles['demo-content-detail'] }>along with some real success examples </div>
-						</div>
-						<EmpRequestForm onSubmit = { this.handleSubmit }/>
-					</div>
-				</section>
-				<Footer />
+				<MapWithAMakredInfoWindow
+					onMarkerClick={this.handleMarkerClick}
+				/>
 			</div>
 		)
 	}
 }
 
-export default EmpDemo;
+export default GoogleMapDisplay;
 

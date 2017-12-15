@@ -8,6 +8,7 @@ class Welcome extends Component {
 					<h1>
 						Unlcok The Prize
 						<br/>
+						
 					</h1>
 					<div className="landing-options">
 						<a href="/jobs" className="btn btn-lg">

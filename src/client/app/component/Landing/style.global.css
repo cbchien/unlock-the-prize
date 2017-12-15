@@ -115,7 +115,7 @@ h2.header {
 /******Landing Styles******/
 
 .landing {
-	height: 1024px;
+	height: 300px;
     background: url("https://cbchien.github.io/cover/beergarten.jpg") no-repeat center fixed;
     padding-top: 50px;
     margin-top: 80px;
@@ -205,7 +205,7 @@ h2.header {
 
     /*****landing styles*****/
     .landing {
-        height: 1200px;
+        height: 600px;
     }
 }
 
