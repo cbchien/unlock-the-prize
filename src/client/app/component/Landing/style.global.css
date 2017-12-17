@@ -8,7 +8,7 @@ body {
 	font-family: 'CenturyOld', 'Arial', serif, sans-serif; 
 	font-size: 14px;
 	line-height: 1.5;
-	background: rgba(5, 26, 57, 1);
+	background: #fff;
 }
 
 section {
@@ -115,10 +115,10 @@ h2.header {
 /******Landing Styles******/
 
 .landing {
-	height: 300px;
-    background: url("https://cbchien.github.io/cover/beergarten.jpg") no-repeat center fixed;
+	height: 600px;
+    background: url('../../../../../assets/images/beergarten.jpg') no-repeat center fixed;
     padding-top: 50px;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .landing-title h1 {
@@ -155,7 +155,11 @@ h2.header {
 	background-color: rgba(20, 27, 38, 0.7);
 }
 
-
+#map {
+    margin: 0px 10px 20px 6%;
+    width: 60%;
+    height: 400px;
+}
 /*****Footer Styles*****/
 
 .main-footer {

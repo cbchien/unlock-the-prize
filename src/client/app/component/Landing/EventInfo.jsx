@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import styles from './EventInfo.scss';
+import bottle from '../../../../../assets/images/Asset4.png';
 
+// https://cbchien.github.io/cover/Asset4.png
 class EventInfo extends Component {
 	render() {
 		return(
-			<section className="event-info">
+			<section className={ styles['event-info'] }>
 				<div className={ styles['info']}>
-                <span><img src="https://cbchien.github.io/cover/Asset4.png" id={ styles['bottle']}></img></span>
+                <span><img src={bottle} id={ styles['bottle']}></img></span>
                     <h4>Join our Road to Paulaner: </h4>
                     <h5>Treasure Collection Game for an engaging Paulaner experience.</h5>
                     <ul>

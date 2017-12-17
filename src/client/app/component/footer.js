@@ -31,7 +31,6 @@ class Footer extends Component {
 								<li>
 									<a href="https://www.facebook.com/">Facebook</a>
 									<span className="socialIcon">
-										<img src=""/>
 										<FontAwesome
 									        className='social'
 									        name='facebook-official'
@@ -43,7 +42,6 @@ class Footer extends Component {
 								<li>
 									<a href="https://twitter.com">Twitter</a>
 									<span className="socialIcon">
-										<img src=""/>
 										<FontAwesome
 									        className='social'
 									        name='twitter-square'
@@ -55,7 +53,6 @@ class Footer extends Component {
 								<li>
 									<a href="https://plus.google.com/">Google Plus</a>
 									<span className="socialIcon">
-										<img src=""/>
 										<FontAwesome
 									        className='social'
 									        name='google-plus-official'
@@ -67,7 +64,6 @@ class Footer extends Component {
 								<li>
 									<a href="https://www.instagram.com/">Instagram</a>
 									<span className="socialIcon">
-										<img src=""/>
 										<FontAwesome
 									        className='social'
 									        name='instagram'
