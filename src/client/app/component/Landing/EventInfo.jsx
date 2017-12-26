@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styles from './EventInfo.scss';
-import bottle from '../../../../../assets/images/Asset4.png';
+import bottle from '../../../../../assets/images/naturtrub.png';
 
 // https://cbchien.github.io/cover/Asset4.png
 class EventInfo extends Component {
