@@ -54,6 +54,12 @@
     padding: 60px 5vw 30px 5vw;
 }
 
+.beer-bottle-right {
+    /* display: inline; */
+    float: right;
+    transform:translate(-10%, -15%);
+}
+
 .product-content {
     width: 60vw;
     border: 1px solid slategrey;
