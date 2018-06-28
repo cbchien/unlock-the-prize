@@ -65,11 +65,11 @@ class Footer extends Component {
 									<a href="https://www.instagram.com/">Instagram</a>
 									<span className="socialIcon">
 										<FontAwesome
-									        className='social'
-									        name='instagram'
-									        size='2x'
-									        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-									    />									</span>
+											className='social'
+											name='instagram'
+											size='2x'
+											style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+										/>									</span>
 								</li>
 							</ul>
 						</div>
@@ -77,7 +77,7 @@ class Footer extends Component {
 				</div>
 				<div className="company-info">
 					<div className="container">
-						<p className="text-center">&copy; Unlock The Prize 2017</p>
+						<p className="text-center">&copy; Yellow Page Team 2018</p>
 					</div>
 				</div>
 			</footer>

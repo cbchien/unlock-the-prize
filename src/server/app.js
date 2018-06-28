@@ -13,7 +13,7 @@ import './auth/passport.config';
 // set up mongoDB connection
 mongoose.Promise = global.Promise;
 const MONGO_URL = process.env.MONGO_URL ||
-  'mongodb://localhost:27017/unlock-the-prize';
+  'mongodb://localhost:27017/yellow-book';
 mongoose
   .connect(MONGO_URL, { useMongoClient: true })
   .then(() => {
@@ -31,7 +31,7 @@ const app = express();
 const sessionConfig = {
   resave: false,
   saveUninitialized: false,
-  secret: process.env.SECRET || 'secret-prize',
+  secret: process.env.SECRET || 'secret-page',
   maxAge: 24 * 60 * 60 * 1000,
 };
 if (process.env.NODE_ENV === 'production') {
@@ -94,7 +94,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // global error handler
 // catch all errors that are not handled by individual route
-app.use((err, req, res, next) => {
+app.use((req, res, err) => {
   const status = err.status || 500;
   const message = err.message || err.toString();
   res.status(status).json({ error: message });
@@ -103,5 +103,5 @@ app.use((err, req, res, next) => {
 // create the server
 const PORT = process.env.PORT || 7070;
 const server = app.listen(PORT, () => {
-  console.log(`${process.env.NODE_ENV} Jobbatical-clone server is listening on port ${server.address().port}`);
+  console.log(`${process.env.NODE_ENV} Yellow-Book server is listening on port ${server.address().port}`);
 });

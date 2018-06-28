@@ -10,7 +10,6 @@ const MONGO_URL = process.env.MONGO_URL ||
   'mongodb://localhost:27017/yellow-book';
 mongoose
   .connect(MONGO_URL, { useMongoClient: true })
-  .then(() => Listing.remove({}))
   .then(() => Listing.create(listings))
   .then(() => mongoose.disconnect())
   .then(() => {

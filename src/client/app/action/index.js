@@ -1,3 +1,8 @@
+// actions for listings
+export {
+  fetchListings,
+} from './listing'
+
 // actions for users
 export {
   FETCH_USER_START,

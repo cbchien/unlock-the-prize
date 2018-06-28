@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { render } from 'react-dom'
+// import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader';
 
 import App from './app';
@@ -12,7 +12,7 @@ const store = configureStore();
 function renderApp(Component) {
   ReactDOM.render(
     <AppContainer>
-      {Component}
+      { Component }
     </AppContainer>,
     document.getElementById('root'),
   );

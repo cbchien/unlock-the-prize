@@ -5,7 +5,6 @@ import './style.global.css';
 
 
 import Heading from '../header';
-import Welcome from './welcome';
 import Footer from '../footer'
 import EventInfo from './EventInfo';
 import GoogleMapDisplay from './GoogleMap';
@@ -15,7 +14,6 @@ class Landing extends Component{
 		return(
 			<div>
 				<Heading />
-				{/* <Welcome /> */}
 				<GoogleMapDisplay />
 				<EventInfo />
 				<Footer />

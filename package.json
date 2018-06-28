@@ -1,9 +1,9 @@
 {
-  "name": "Unlock-the-prize",
+  "name": "Yellow-Book",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/cbchien/unlock-the-prize234234",
+  "repository": "",
   "contributors": [
     "cbchien46"
   ],
@@ -16,6 +16,7 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .js --ext .jsx src/",
+    "append-db": "node scripts/append-db.js",
     "populate-db": "node scripts/populate-db.js",
     "clear-db": "node scripts/clear-db.js",
     "start": "cross-env NODE_ENV=production node index.js",

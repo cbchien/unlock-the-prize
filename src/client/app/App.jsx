@@ -14,8 +14,8 @@ import {
   ForgotPass,
   SignUp,
   About,
-  Products,
   Contact,
+  Listing
 } from './component';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         <Route path="/forgot" component={ForgotPass} />
         <Route path="/signup" component={SignUp} />
         <Route path="/about" component={About} />
-        <Route path="/products" component={Products} />
+        <Route path="/listing" component={Listing} />
         <Route path="/contact" component={Contact} />
         <Route path="/" component={Landing} />
         <Redirect to="/example" />

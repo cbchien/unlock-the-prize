@@ -54,9 +54,9 @@ class Heading extends Component {
 					          {!this.props.user && <DropdownItem><Link to="/login">登入<br/>Log In</Link></DropdownItem>}
 					          {this.props.user && <DropdownItem><Link to="/logout" onClick={this.logout}>登出<br/>Logout</Link></DropdownItem>}
 					        	<DropdownItem divider />
-					        	<DropdownItem><Link to="/about">品牌介紹<br/>About</Link></DropdownItem>
+					        	<DropdownItem><Link to="/listing">所有刊登<br/>Listing</Link></DropdownItem>
 					        	<DropdownItem divider />
-										<DropdownItem><Link to="/products">產品介紹<br/>Product</Link></DropdownItem>
+										<DropdownItem><Link to="/products">我的最愛<br/>Favorites</Link></DropdownItem>
 										<DropdownItem divider />
 										<DropdownItem><Link to="/contact">聯絡我們<br/>Contact</Link></DropdownItem>
 					        </DropdownMenu>
@@ -64,13 +64,13 @@ class Heading extends Component {
 							</div>
 						</section>
 						<div className="hidden-xs">
-							<Link to="/"><img src="https://cbchien.github.io/cover/logo-02.png" id="logo"></img></Link>
+							<Link to="/"><img src="#" id="logo"></img></Link>
 							<ul className="nav navbar-nav">
 								<li className="logo">
-									<Link to="/">Unlock The Prize</Link>
+									<Link to="/">Yellow Page</Link>
 								</li>
 								<li className="hidden-xs">
-									<Link to="/">Road to Unlock</Link>
+									<Link to="/">Home Page</Link>
 								</li>
 								<li className="hidden-xs">
                   {this.props.user &&
@@ -82,16 +82,16 @@ class Heading extends Component {
 									<Link to="/login">加入活動<br/>Join</Link>
 								</li>}
 								{this.props.user && <li>
-                  <Link to="/">闖關進度<br/>Achievement</Link>
+                  <Link to="/">會員資料<br/>Members</Link>
                 </li>}
                 {this.props.user && <li>
                   <Link to="/" onClick={this.logout}>登出<br/>Logout</Link>
                 </li>}
                 <li>
-									<Link to="/about">品牌介紹<br/>About</Link>
+									<Link to="/listing">所有刊登<br/>Listing</Link>
 								</li>
                 <li>
-									<Link to="/products">產品介紹<br/>Product</Link>
+									<Link to="/products">我的最愛<br/>Favorites</Link>
 								</li>
 								<li>
 									<Link to="/contact">聯絡我們<br/>Contact</Link>

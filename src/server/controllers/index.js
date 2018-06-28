@@ -1,9 +1,9 @@
-var TaskController = require('./TaskController')
+var ListingController = require('./ListingController')
 var UserController = require('./UserController')
 var ContactController = require('./ContactController')
 
 module.exports = {
-	task: TaskController,
+	listing: ListingController,
 	user: UserController,
 	contact: ContactController
 }
