@@ -34,18 +34,24 @@ module.exports = {
 		})
 	},
 
-	findActiveAndSortByWeighting: function(callback){
-		Listing.find({"status":"active"}, {}, {sort: {weighting: -1, datePosted: -1}}, function(err, listing){
-			if (err) {
+	findAndSortByWeighting: function(queryUpdate, paramsUpdate, queryFind, paramsFind, callback){
+		Listing.update(queryUpdate, paramsUpdate, {upsert:false, multi:true}, function(err){
+			if (err){
 				callback(err, null)
 				return
 			}
-			callback(null, listing)
+			Listing.find(queryFind, paramsFind, {sort: {weighting: -1, datePosted: -1}}, function(err, listing){
+				if (err) {
+					callback(err, null)
+					return
+				}
+				callback(null, listing)
+			})
 		})
 	},
 
-	updateAndReturnActive: function(query, params, callback){
-		Listing.update(query, params, {upsert:false, multi:true}, function(err){
+	updateAndReturn: function(queryUpdate, queryFind, params, callback){
+		Listing.update(queryUpdate, params, {upsert:false, multi:true}, function(err){
 			if (err){
 				callback(err, null)
 				return

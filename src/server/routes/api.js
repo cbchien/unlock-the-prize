@@ -23,7 +23,11 @@ router.get('/:resource', function(req, res){
 	}
 
 	if (resource == 'listing') {
-		controller.findActiveAndSortByWeighting(function(err, results){
+		var queryFind = {"status":"active"}
+		var paramsFind = {}
+		var queryUpdate = {}
+		var paramsUpdate = {}
+		controller.findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
 			if (err){
 					res.json({ 
 						confirmation: 'fail',
@@ -52,9 +56,10 @@ router.get('/:resource', function(req, res){
 
 // Refresh database listing for expired listings
 router.get('/listing/refresh', function(req, res, next){
-	var q_time = {"dateExpired":{"$lte": new Date()}}
-	var q_active = {"status":"inactive"}
-	controllers["listing"].updateAndReturnActive({ $and: [ q_time] }, q_active, function(err, result){
+	var paramsUpdate = {"status":"inactive"}
+	var queryUpdate = { $and: [ {"dateExpired":{"$lte": new Date()}} ] }
+	var queryFind = {"status":"active"}
+	controllers["listing"].updateAndReturn(queryUpdate, queryFind, paramsUpdate, function(err, result){
 		if (err){
 			res.json({
 				confirmation: 'fail',
@@ -63,6 +68,25 @@ router.get('/listing/refresh', function(req, res, next){
 			return
 		}
 		res.json(result)
+	})
+})
+
+// Add call phone call count
+router.get('/listing/addcallcount/:listingId', function(req, res, next){
+	var listingId = req.params.listingId;	
+	var queryFind = {"_id": listingId,}
+	var paramsFind = {}
+	var queryUpdate = queryFind
+	var paramsUpdate = { $inc: { countCalled: 1 } }
+	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
+		if (err){
+				res.json({ 
+					confirmation: 'fail',
+					resource: err
+				})
+			return;
+		}
+		res.json(results)
 	})
 })
 
@@ -157,22 +181,26 @@ router.get('/listing/:category/:location/:keyword', function(req, res, next){
 		]}
 	}
 
-	controllers["listing"].find({
-			$and: [
-				q_category,
-				q_city,
-				q_keyword,
-				{"status":"active"}
-			]
-		}, function(err, result){
+	var queryFind = {
+		$and: [
+			q_category,
+			q_city,
+			q_keyword,
+			{"status":"active"}
+		]
+	}
+	var paramsFind = {}
+	var queryUpdate = queryFind
+	var paramsUpdate = { $inc: { countQueried: 1 } }
+	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
 		if (err){
-			res.json({
-				confirmation: 'fail',
-				message: 'Category Not Found'
-			})
-			return
+				res.json({ 
+					confirmation: 'fail',
+					resource: err
+				})
+			return;
 		}
-		res.json(result)
+		res.json(results)
 	})
 })
 
