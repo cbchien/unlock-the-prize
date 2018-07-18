@@ -67,7 +67,12 @@ router.get('/listing/refresh', function(req, res, next){
 			})
 			return
 		}
-		res.json(result)
+		res.json({
+				confirmation: 'success!',
+				message: 'Database refresh done. Expired post status updated success!',
+				data: result
+			})
+		// res.json(result)
 	})
 })
 
