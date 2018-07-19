@@ -23,8 +23,8 @@ router.get('/:resource', function(req, res){
 	}
 
 	if (resource == 'listing') {
-		var queryFind = {"status":"active"}
-		var paramsFind = {}
+		var queryFind = {"dateExpired":{ $gte : Date.now() }}
+		var paramsFind = {countCalled:0, countQueried:0, __v:0}
 		var queryUpdate = {}
 		var paramsUpdate = {}
 		controller.findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
@@ -75,7 +75,7 @@ router.get('/listing/refresh', function(req, res, next){
 router.get('/listing/addcallcount/:listingId', function(req, res, next){
 	var listingId = req.params.listingId;	
 	var queryFind = {"_id": listingId,}
-	var paramsFind = {}
+	var paramsFind = {countCalled:0, countQueried:0, __v:0}
 	var queryUpdate = queryFind
 	var paramsUpdate = { $inc: { countCalled: 1 } }
 	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
@@ -189,7 +189,7 @@ router.get('/listing/:category/:location/:keyword', function(req, res, next){
 			{"status":"active"}
 		]
 	}
-	var paramsFind = {}
+	var paramsFind = {countCalled:0, countQueried:0, __v:0}
 	var queryUpdate = queryFind
 	var paramsUpdate = { $inc: { countQueried: 1 } }
 	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
