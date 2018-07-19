@@ -20,7 +20,17 @@ var ListingSchema = new mongoose.Schema({
 			details:{ type: String, default:'Unkonwn' },
 			district:{ type: String, default:'Unkonwn' },
 			city:{ type: String, default:'Unkonwn' }
-		}
+		}, 
+  }, {
+	toJSON: {virtuals: true},
+	toObject: { getters: true }
+});
+
+ListingSchema.virtual('datePostedMS').get(function() {
+	return this.datePosted.getTime();
+  });
+ListingSchema.virtual('dateExpiredMS').get(function() {
+	return this.dateExpired.getTime();
   });
 
 module.exports = mongoose.model('Listing', ListingSchema);
