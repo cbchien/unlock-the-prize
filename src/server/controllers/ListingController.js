@@ -40,7 +40,7 @@ module.exports = {
 				callback(err, null)
 				return
 			}
-			Listing.find(queryFind, paramsFind, {sort: {weighting: -1, datePosted: -1}}, function(err, listing){
+			Listing.find(queryFind, paramsFind, {sort: {weighting: -1, datePosted: -1}, limit: 50, skip: 0}, function(err, listing){
 				if (err) {
 					callback(err, null)
 					return
