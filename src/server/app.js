@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 
 import paths from '../../paths';
 import './auth/passport.config';
@@ -99,6 +100,8 @@ app.use((req, res, err) => {
   const message = err.message || err.toString();
   res.status(status).json({ error: message });
 });
+// Morgan to log HTTP requests
+app.use(morgan(':method :url :status [:date[clf]] :res[content-length] - :response-time ms ":user-agent"'))
 
 // create the server
 const PORT = process.env.PORT || 7070;
