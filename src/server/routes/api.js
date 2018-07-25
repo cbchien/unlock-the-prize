@@ -170,7 +170,10 @@ router.get('/listing/:category/:location/:keyword', function(req, res, next){
 
 	if (req.params.category != 'na'){
 		var category = req.params.category.split(',');
-		q_category = {"category" : new RegExp("^" + category.toString(), "i")}
+		for (var i = 0; i < category.length; i++) {
+			category[i] = new RegExp("^" + category[i].toString(), "i")
+		}
+		q_category = {"category" : { $in: category} }
 	}
 
 	if (req.params.location != 'na'){
@@ -180,6 +183,9 @@ router.get('/listing/:category/:location/:keyword', function(req, res, next){
 
 	if (req.params.keyword != 'na'){
 		var keyword = req.params.keyword.split(',');
+		for (var i = 0; i < keyword.length; i++) {
+			keyword[i] = new RegExp("^" + keyword[i].toString(), "i")
+		}
 		q_keyword = {$or: [
 			{ "keyword": {$in: keyword} },
 			{ "title": {$in: keyword} }
