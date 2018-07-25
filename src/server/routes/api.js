@@ -131,13 +131,12 @@ router.post('/:resource', function(req, res){
 		id = req.body.values.email
 		data = req.body.values
 	} else if (resource === 'listing'){
-		console.log(req.body)
 		// id = req.body.values.title
 		// req.body = req.body.values
 		id = req.body.title
 		data = req.body
-  } else if (resource === 'user') {
-    id = { _id: req.body._id };
+  	} else if (resource === 'user') {
+    	id = { _id: req.body._id };
 	} else {
 		id = {'data.oauth':req.body.data.oauth}
 	}
@@ -167,6 +166,9 @@ router.post('/:resource', function(req, res){
 // Query for Listings.
 router.get('/listing/:category/:location/:keyword', function(req, res, next){
 	var q_category={}, q_city={}, q_keyword={}
+
+	console.log(req["method"])
+	console.log(decodeURI(req["url"]))
 
 	if (req.params.category != 'na'){
 		var category = req.params.category.split(',');
@@ -203,6 +205,18 @@ router.get('/listing/:category/:location/:keyword', function(req, res, next){
 	var paramsFind = {countCalled:0, countQueried:0, __v:0}
 	var queryUpdate = queryFind
 	var paramsUpdate = { $inc: { countQueried: 1 } }
+
+	// Log keyword query
+	controllers["keywordlog"].insert({ category: req.params.category, location: req.params.location, keyword: req.params.keyword }, function(err, results){
+		if (err){
+				res.json({ 
+					confirmation: 'fail',
+					resource: err
+				})
+			return;
+		}
+	})
+
 	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
 		if (err){
 				res.json({ 
