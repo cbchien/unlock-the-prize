@@ -76,6 +76,70 @@ router.get('/listing/refresh', function(req, res, next){
 	})
 })
 
+// Query for Listings.
+//router.get('/listing/:category/:location/:keyword', function(req, res, next){
+	router.get('/listing/filter', function(req, res, next){
+		var q_category={}, q_city={}, q_keyword={}
+	
+		if (req.query.category != 'na'){
+			var category = req.query.category.split(',');
+			for (var i = 0; i < category.length; i++) {
+				category[i] = new RegExp("^" + category[i].toString(), "i")
+			}
+			q_category = {"category" : { $in: category} }
+		}
+	
+		if (req.query.location != 'na'){
+			var location = req.query.location.split(',');
+			q_city = {"address.city": {$in: location} }
+		}
+	
+		if (req.query.keyword != 'na'){
+			var keyword = req.query.keyword.split(',');
+			for (var j = 0; j < keyword.length; j++) {
+				keyword[j] = new RegExp("^" + keyword[j].toString(), "i")
+			}
+			q_keyword = {$or: [
+				{ "keyword": {$in: keyword} },
+				{ "title": {$in: keyword} }
+			]}
+		}
+	
+		var queryFind = {
+			$and: [
+				q_category,
+				q_city,
+				q_keyword,
+				{"status":"active"}
+			]
+		}
+		var paramsFind = {countCalled:0, countQueried:0, __v:0}
+		var queryUpdate = queryFind
+		var paramsUpdate = { $inc: { countQueried: 1 } }
+	
+		// Log keyword query
+		controllers["keywordlog"].insert({ category: req.params.category, location: req.params.location, keyword: req.params.keyword }, function(err, results){
+			if (err){
+					res.json({ 
+						confirmation: 'fail',
+						resource: err
+					})
+				return;
+			}
+		})
+	
+		controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
+			if (err){
+					res.json({ 
+						confirmation: 'fail',
+						resource: err
+					})
+				return;
+			}
+			res.json(results)
+		})
+	})
+	
 // Add call phone call count
 router.get('/listing/addcallcount/:listingId', function(req, res, next){
 	var listingId = req.params.listingId;	
@@ -163,70 +227,5 @@ router.post('/:resource', function(req, res){
 	})
 })
 
-// Query for Listings.
-router.get('/listing/:category/:location/:keyword', function(req, res, next){
-	var q_category={}, q_city={}, q_keyword={}
-
-	console.log(req["method"])
-	console.log(decodeURI(req["url"]))
-
-	if (req.params.category != 'na'){
-		var category = req.params.category.split(',');
-		for (var i = 0; i < category.length; i++) {
-			category[i] = new RegExp("^" + category[i].toString(), "i")
-		}
-		q_category = {"category" : { $in: category} }
-	}
-
-	if (req.params.location != 'na'){
-		var location = req.params.location.split(',');
-		q_city = {"address.city": {$in: location} }
-	}
-
-	if (req.params.keyword != 'na'){
-		var keyword = req.params.keyword.split(',');
-		for (var i = 0; i < keyword.length; i++) {
-			keyword[i] = new RegExp("^" + keyword[i].toString(), "i")
-		}
-		q_keyword = {$or: [
-			{ "keyword": {$in: keyword} },
-			{ "title": {$in: keyword} }
-		]}
-	}
-
-	var queryFind = {
-		$and: [
-			q_category,
-			q_city,
-			q_keyword,
-			{"status":"active"}
-		]
-	}
-	var paramsFind = {countCalled:0, countQueried:0, __v:0}
-	var queryUpdate = queryFind
-	var paramsUpdate = { $inc: { countQueried: 1 } }
-
-	// Log keyword query
-	controllers["keywordlog"].insert({ category: req.params.category, location: req.params.location, keyword: req.params.keyword }, function(err, results){
-		if (err){
-				res.json({ 
-					confirmation: 'fail',
-					resource: err
-				})
-			return;
-		}
-	})
-
-	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
-		if (err){
-				res.json({ 
-					confirmation: 'fail',
-					resource: err
-				})
-			return;
-		}
-		res.json(results)
-	})
-})
 
 module.exports = router;
