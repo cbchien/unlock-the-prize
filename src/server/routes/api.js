@@ -89,9 +89,9 @@ router.get('/listing/refresh', function(req, res, next){
 			q_category = {"category" : { $in: category} }
 		}
 	
-		if (req.query.location != 'na' & req.query.location){
-			var location = req.query.location.split(',');
-			q_city = {"address.city": {$in: location} }
+		if (req.query.city != 'na' & req.query.city){
+			var cities = req.query.location.split(',');
+			q_city = {"address.city": {$in: cities} }
 		}
 	
 		if (req.query.keyword != 'na' & req.query.keyword){
