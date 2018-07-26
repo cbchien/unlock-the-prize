@@ -81,7 +81,7 @@ router.get('/listing/refresh', function(req, res, next){
 	router.get('/listing/filter', function(req, res, next){
 		var q_category={}, q_city={}, q_keyword={}
 	
-		if (req.query.category != 'na'){
+		if (req.query.category != 'na' & req.query.category){
 			var category = req.query.category.split(',');
 			for (var i = 0; i < category.length; i++) {
 				category[i] = new RegExp("^" + category[i].toString(), "i")
@@ -89,12 +89,12 @@ router.get('/listing/refresh', function(req, res, next){
 			q_category = {"category" : { $in: category} }
 		}
 	
-		if (req.query.location != 'na'){
+		if (req.query.location != 'na' & req.query.location){
 			var location = req.query.location.split(',');
 			q_city = {"address.city": {$in: location} }
 		}
 	
-		if (req.query.keyword != 'na'){
+		if (req.query.keyword != 'na' & req.query.keyword){
 			var keyword = req.query.keyword.split(',');
 			for (var j = 0; j < keyword.length; j++) {
 				keyword[j] = new RegExp("^" + keyword[j].toString(), "i")
