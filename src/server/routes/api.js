@@ -81,7 +81,7 @@ router.get('/listing/refresh', function(req, res, next){
 	router.get('/listing/filter', function(req, res, next){
 		var q_category={}, q_city={}, q_keyword={}
 	
-		if (req.query.category != 'na' & req.query.category){
+		if (req.query.category != 'na' && req.query.category){
 			var category = req.query.category.split(',');
 			for (var i = 0; i < category.length; i++) {
 				category[i] = new RegExp("^" + category[i].toString(), "i")
@@ -89,12 +89,12 @@ router.get('/listing/refresh', function(req, res, next){
 			q_category = {"category" : { $in: category} }
 		}
 	
-		if (req.query.city != 'na' & req.query.city){
-			var cities = req.query.location.split(',');
+		if (req.query.city != 'na' && req.query.city){
+			var cities = req.query.city.split(',');
 			q_city = {"address.city": {$in: cities} }
 		}
 	
-		if (req.query.keyword != 'na' & req.query.keyword){
+		if (req.query.keyword != 'na' && req.query.keyword){
 			var keyword = req.query.keyword.split(',');
 			for (var j = 0; j < keyword.length; j++) {
 				keyword[j] = new RegExp("^" + keyword[j].toString(), "i")
@@ -104,7 +104,7 @@ router.get('/listing/refresh', function(req, res, next){
 				{ "title": {$in: keyword} }
 			]}
 		}
-	
+		
 		var queryFind = {
 			$and: [
 				q_category,
