@@ -76,6 +76,29 @@ router.get('/listing/refresh', function(req, res, next){
 	})
 })
 
+// Return a list of all cities
+router.get('/listing/categorylist', function(req, res){
+	const categoryList = ["運輸","家事及服務","餐飲","保全", "修繕","行政客服","作業員"]
+	
+	res.json({
+		message: 'All category',
+		data: categoryList
+	})
+})
+
+// Return a list of all cities
+router.get('/listing/citylist', function(req, res){
+	const cityList = ["台北市","新北市","基隆市","桃園市","新竹市",
+                   "新竹縣","苗栗縣","台中市","彰化縣","南投縣",
+                   "雲林縣","嘉義市","嘉義縣","台南市","高雄市",
+                   "屏東縣","台東縣","花蓮縣","宜蘭縣","澎湖縣"]
+	
+	res.json({
+		message: 'All cities',
+		data: cityList
+	})
+})
+
 // Query for Listings.
 //router.get('/listing/:category/:location/:keyword', function(req, res, next){
 	router.get('/listing/filter', function(req, res, next){
