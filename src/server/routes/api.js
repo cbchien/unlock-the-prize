@@ -24,7 +24,8 @@ router.get('/:resource', function(req, res){
 
 	if (resource == 'listing') {
 		var queryFind = {"dateExpired":{ $gte : Date.now() }}
-		var paramsFind = {countCalled:0, countQueried:0, __v:0}
+		// var paramsFind = {countCalled:0, countQueried:0, __v:0}
+		var paramsFind = {__v:0}
 		var queryUpdate = {}
 		var paramsUpdate = {}
 		controller.findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
@@ -164,10 +165,10 @@ router.get('/listing/citylist', function(req, res){
 	})
 	
 // Add call phone call count
-router.get('/listing/addcallcount/:listingId', function(req, res, next){
+router.post('/listing/addcallcount/:listingId', function(req, res, next){
 	var listingId = req.params.listingId;	
 	var queryFind = {"_id": listingId,}
-	var paramsFind = {countCalled:0, countQueried:0, __v:0}
+	var paramsFind = {countQueried:0, __v:0}
 	var queryUpdate = queryFind
 	var paramsUpdate = { $inc: { countCalled: 1 } }
 	controllers["listing"].findAndSortByWeighting(queryUpdate, paramsUpdate, queryFind, paramsFind, function(err, results){
@@ -177,8 +178,18 @@ router.get('/listing/addcallcount/:listingId', function(req, res, next){
 					resource: err
 				})
 			return;
+		} else if (results.length < 1) {
+			res.json({ 
+				confirmation: 'Listing ID not found',
+				result: results
+			})
+			return
 		}
-		res.json(results)
+
+		res.json({
+			confirmation: 'added call count for ' + listingId,
+			result: results
+		})
 	})
 })
 
