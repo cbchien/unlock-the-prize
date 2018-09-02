@@ -121,8 +121,9 @@ router.get('/listing/citylist', function(req, res){
 		if (req.query.keyword != 'na' && req.query.keyword){
 			var keyword = req.query.keyword.split(',');
 			for (var j = 0; j < keyword.length; j++) {
-				keyword[j] = new RegExp("^" + keyword[j].toString(), "i")
+				keyword[j] = new RegExp(keyword[j].toString(), "i")
 			}
+			
 			q_keyword = {$or: [
 				{ "keyword": {$in: keyword} },
 				{ "title": {$in: keyword} }
